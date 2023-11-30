@@ -1,6 +1,10 @@
+using System.Threading.Tasks;
 using _5letters.Data;
 using _5letters.Extensions;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace _5letters
 {
@@ -38,11 +42,11 @@ namespace _5letters
                 .SetIsOriginAllowed(origin => true)
                 .AllowCredentials());
 
-            using (var scope = app.Services.CreateScope())
-            {
-                var context = scope.ServiceProvider.GetRequiredService<AppDbContext>();
-                await context.Database.MigrateAsync();
-            }
+            // using (var scope = app.Services.CreateScope())
+            // {
+            //     var context = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+            //     await context.Database.MigrateAsync();
+            // }
 
             app.UseAuthorization();
 
