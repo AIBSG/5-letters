@@ -1,0 +1,10 @@
+.mainContainer {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    background: #4E53D540;
+    padding: 38px 11px;
+    box-sizing: border-box;
+    flex-direction: column;
+    position: relative;
+}
