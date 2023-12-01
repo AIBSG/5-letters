@@ -2,10 +2,6 @@ import React, {useEffect, useState} from "react";
 import axios from "axios";
 import AllLetters from "../freeLetters/freeLetters";
 
-
-
-
-/*
 const src = 'https://content.guardianapis.com/search?page=2&q=debate&api-key=test'
 const Request = () => {
 
@@ -29,7 +25,7 @@ const Request = () => {
         </div>
     )
 }
-*/
+
 
 
 export default Request

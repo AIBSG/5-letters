@@ -26,17 +26,12 @@ namespace _5letters.Controllers
             Words = new List<Word>(),
             UserId = Guid.Empty
         };
-
-        // public GameController (ILogger<GameController> logger)
-        // {
-        //     _logger = logger;
-        // }
-        //
+        
+        //пользователь заходит мы получаем его id
         // [HttpPost]
-        // public string GameProcess([FromBody] string nowWord)
+        // public IActionResult GetUserGame(long userId)
         // {
-        //     Game result = GameService.RunGame(NowGame, nowWord);
-        //     return "aaa";
+        //     
         // }
         [HttpPost]
         public IActionResult GetWord(string nowWord)
