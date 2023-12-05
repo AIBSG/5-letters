@@ -24,7 +24,8 @@ namespace _5letters.Controllers
             GameStage = GameStages.GameInProgress,
             Id = 228,
             Words = new List<Word>(),
-            UserId = Guid.Empty
+            UserId = Guid.Empty,
+            KeyboardStatus = new List<Letter>()
         };
         
         //пользователь заходит мы получаем его id
