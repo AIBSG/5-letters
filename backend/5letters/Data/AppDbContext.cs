@@ -11,7 +11,8 @@ namespace _5letters.Data
         public DbSet<Letter> Letters { get; set; }
         public AppDbContext(DbContextOptions options) : base(options)
         {
-            
+            //Database.EnsureCreated();
         }
+        
     }
 }

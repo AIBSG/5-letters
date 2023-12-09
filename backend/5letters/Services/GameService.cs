@@ -13,15 +13,15 @@ namespace _5letters.Services
                 var nowLetter = nowWord[i];
                 if (correctWord[i] == nowLetter)
                 {
-                    result.Letters.Add(new Letter(nowLetter, LetterStatus.RightPlace));
+                    result.Letters.Add(new Letter(){WordLetter = nowLetter, LetterStatus = LetterStatus.RightPlace});
                 }
                 else if (correctWord.Contains(nowLetter))
                 {
-                    result.Letters.Add(new Letter(nowLetter, LetterStatus.InWord));
+                    result.Letters.Add(new Letter(){WordLetter = nowLetter, LetterStatus = LetterStatus.InWord});
                 }
                 else
                 {
-                    result.Letters.Add(new Letter(nowLetter, LetterStatus.WrongLetter));
+                    result.Letters.Add(new Letter(){WordLetter = nowLetter, LetterStatus = LetterStatus.WrongLetter});
                 }
             }
 
@@ -39,12 +39,9 @@ namespace _5letters.Services
 
         public Game RunGame(Game nowGame, string nowWorld)
         {
-<<<<<<< Updated upstream
-            nowGame.Words.Add(ChekWord(nowWorld, nowGame.CorrectWord));
-=======
+
             nowGame.Words.Add(ChekWord(nowWorld, nowGame.CorrectWord.StringWord));
             
->>>>>>> Stashed changes
             if (nowGame.Words.Last().Status == WordStatus.CorrectWord)
             {
                 nowGame.GameStage = GameStages.Victory;
