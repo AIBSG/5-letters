@@ -10,6 +10,8 @@ namespace _5letters.Models
         public List<Word> Words { get; set; }
         public CorrectWord CorrectWord { get; set; }
         public GameStages GameStage { get; set; }
+        
+        public List<Letter> KeyboardStatus { get; set; }
 
     }
 }
