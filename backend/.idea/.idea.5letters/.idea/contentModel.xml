@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="C:\Users\gglol\AppData\Local\JetBrains\Rider2020.2\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\gglol\AppData\Local\JetBrains\Rider2020.2\resharper-host\Local\Transient\Rider\v202\SolutionCaches\_5letters.1537521784.00" t="ExcludeRecursive" />
+    <e p="C:\Users\gglol\Desktop\miniApp_5\miniApp_5\backend" t="IncludeFlat">
+      <e p="5letters" t="IncludeRecursive">
+        <e p="5letters.csproj" t="IncludeRecursive" />
+        <e p="appsettings.Development.json" t="Include" />
+        <e p="appsettings.json" t="Include" />
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="Controllers" t="Include">
+          <e p="GameControlller.cs" t="Include" />
+          <e p="WeatherForecastController.cs" t="Include" />
+        </e>
+        <e p="Data" t="Include">
+          <e p="AppDbContext.cs" t="Include" />
+        </e>
+        <e p="Enums" t="Include">
+          <e p="GameStage.cs" t="Include" />
+          <e p="LetterStatus.cs" t="Include" />
+          <e p="WordStatus.cs" t="Include" />
+        </e>
+        <e p="Extensions" t="Include">
+          <e p="MvcOptionsExtensions.cs" t="Include" />
+          <e p="RoutePrefixConvention.cs" t="Include" />
+        </e>
+        <e p="Models" t="Include">
+          <e p="BaseEntity.cs" t="Include" />
+          <e p="GameModel.cs" t="Include" />
+          <e p="LetterModel.cs" t="Include" />
+          <e p="WordModel.cs" t="Include" />
+        </e>
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="net7.0" t="Include">
+              <e p="5letters.AssemblyInfo.cs" t="Include" />
+              <e p="5letters.GlobalUsings.g.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="Program.cs" t="Include" />
+        <e p="Properties" t="Include">
+          <e p="launchSettings.json" t="Include" />
+        </e>
+        <e p="Services" t="Include">
+          <e p="Game.cs" t="Include" />
+          <e p="GameData.cs" t="Include" />
+          <e p="GameService.cs" t="Include" />
+          <e p="IGameService.cs" t="Include" />
+        </e>
+        <e p="Tests" t="Include">
+          <e p="GameTests.cs" t="Include" />
+        </e>
+        <e p="WeatherForecast.cs" t="Include" />
+      </e>
+      <e p="5letters.sln" t="IncludeFlat" />
+      <e p="packages" t="ExcludeRecursive" />
+    </e>
+  </component>
+</project>

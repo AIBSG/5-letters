@@ -24,15 +24,19 @@ namespace _5letters.Controllers
             GameStage = GameStages.GameInProgress,
             Id = 228,
             Words = new List<Word>(),
-            UserId = Guid.Empty,
-            KeyboardStatus = new List<Letter>()
+            UserId = Guid.Empty
         };
-        
-        //пользователь заходит мы получаем его id
-        // [HttpPost]
-        // public IActionResult GetUserGame(long userId)
+
+        // public GameController (ILogger<GameController> logger)
         // {
-        //     
+        //     _logger = logger;
+        // }
+        //
+        // [HttpPost]
+        // public string GameProcess([FromBody] string nowWord)
+        // {
+        //     Game result = GameService.RunGame(NowGame, nowWord);
+        //     return "aaa";
         // }
         [HttpPost]
         public IActionResult GetWord(string nowWord)
