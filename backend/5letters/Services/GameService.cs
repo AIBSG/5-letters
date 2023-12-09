@@ -39,7 +39,12 @@ namespace _5letters.Services
 
         public Game RunGame(Game nowGame, string nowWorld)
         {
+<<<<<<< Updated upstream
             nowGame.Words.Add(ChekWord(nowWorld, nowGame.CorrectWord));
+=======
+            nowGame.Words.Add(ChekWord(nowWorld, nowGame.CorrectWord.StringWord));
+            
+>>>>>>> Stashed changes
             if (nowGame.Words.Last().Status == WordStatus.CorrectWord)
             {
                 nowGame.GameStage = GameStages.Victory;

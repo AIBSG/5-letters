@@ -19,7 +19,7 @@ namespace _5letters.Controllers
 
         public static Game NowGame = new Game
         {
-            CorrectWord = "носок",
+            CorrectWord = new CorrectWord{Date = DateTimeOffset.Now, Id = 11, StringWord = "носок"},
             Date = DateTimeOffset.Now,
             GameStage = GameStages.GameInProgress,
             Id = 228,

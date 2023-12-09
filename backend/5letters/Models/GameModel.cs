@@ -8,7 +8,7 @@ namespace _5letters.Models
         public Guid UserId { get; set; }
         public DateTimeOffset Date { get; set; } = DateTimeOffset.UtcNow;
         public List<Word> Words { get; set; }
-        public string CorrectWord { get; set; }
+        public CorrectWord CorrectWord { get; set; }
         public GameStages GameStage { get; set; }
 
     }
