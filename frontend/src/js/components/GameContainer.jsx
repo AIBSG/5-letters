@@ -1,12 +1,17 @@
 import React from "react";
 import SelectedLetters from "../selectedLetters/selectedLetters";
-import Header from "../header/header";
 import styles from "./GameContainer.module.css"
+import NavButtons from "../navButtons/navButtons";
+import Keyboard from "../keyboard/keyboard";
+
 const GameContainer = () => {
     return (
-        <div className={styles.gameContainer} >
-            <div>{<Header/>}</div>
-            <div>{<SelectedLetters/>}</div>
+        <div className={styles.container}>
+            <div className={styles.gameAndNav}>
+                <NavButtons/>
+                <SelectedLetters/>
+            </div>
+            <Keyboard/>
         </div>
     )
 }
