@@ -47,6 +47,11 @@ namespace _5letters
             //     var context = scope.ServiceProvider.GetRequiredService<AppDbContext>();
             //     await context.Database.MigrateAsync();
             // }
+            // using (var scope = app.Services.CreateScope())
+            // {
+            //     var context = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+            //     await context.Database.MigrateAsync();
+            // }
 
             app.UseAuthorization();
 

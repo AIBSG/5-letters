@@ -1,5 +1,7 @@
+using System.Collections.Generic;
 using System.Linq;
 using _5letters.Models;
+using Microsoft.VisualBasic;
 
 namespace _5letters.Services
 {
@@ -40,17 +42,49 @@ namespace _5letters.Services
         public Game RunGame(Game nowGame, string nowWorld)
         {
             nowGame.Words.Add(ChekWord(nowWorld, nowGame.CorrectWord));
+            
             if (nowGame.Words.Last().Status == WordStatus.CorrectWord)
             {
                 nowGame.GameStage = GameStages.Victory;
 
             }
+            
             else if (nowGame.Words.Count == 5)
             {
                 nowGame.GameStage = GameStages.Defeat;
             }
-
+            
+            KeyboardStatusUpdate(nowGame);
             return nowGame;
+        }
+
+        public void KeyboardStatusUpdate(Game nowGame)
+        {
+            foreach (var letter in nowGame.Words.Last().Letters)
+            {
+                var flag = false;
+                for (int i = 0; i < nowGame.KeyboardStatus.Count; i++)
+                {
+
+                    if (nowGame.KeyboardStatus[i].WordLetter.Equals(letter.WordLetter))
+                    {
+                        flag = true;
+                        
+                        if (nowGame.KeyboardStatus[i].LetterStatus == LetterStatus.InWord
+                            && letter.LetterStatus == LetterStatus.RightPlace)
+                        {
+                            nowGame.KeyboardStatus[i] = letter;
+                            break;
+                        }
+                    }
+                }
+
+                if (flag == false)
+                {
+                    nowGame.KeyboardStatus.Add(letter);
+                }
+                
+            }
         }
 
     }

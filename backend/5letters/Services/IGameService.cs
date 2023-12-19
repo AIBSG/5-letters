@@ -6,5 +6,7 @@ namespace _5letters.Services
     {
         public Word ChekWord(string nowWord, string correctWord);
         public Game RunGame(Game nowGame, string nowWord);
+        
+        
     }
 }
