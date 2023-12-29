@@ -42,11 +42,24 @@ namespace _5letters
                 .SetIsOriginAllowed(origin => true)
                 .AllowCredentials());
 
+<<<<<<< HEAD
             using (var scope = app.Services.CreateScope())
             {
                 var context = scope.ServiceProvider.GetRequiredService<AppDbContext>();
                 await context.Database.MigrateAsync();
             }
+=======
+            // using (var scope = app.Services.CreateScope())
+            // {
+            //     var context = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+            //     await context.Database.MigrateAsync();
+            // }
+            // using (var scope = app.Services.CreateScope())
+            // {
+            //     var context = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+            //     await context.Database.MigrateAsync();
+            // }
+>>>>>>> 180907a1ebbeebd8de057eec01bc3cbc844e1e29
 
             app.UseAuthorization();
 

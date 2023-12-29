@@ -1,0 +1,73 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.container{
+    display: flex;
+    width: 100%;
+
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    margin-top: 19px;
+}
+.fieldContainer {
+    display: block;
+    flex-direction: column;
+    align-items: center;
+    width: 500px;
+    height: 495px;
+
+}
+.gameFieldFull {
+
+
+
+
+}
+.gameField {
+
+
+}
+.row {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px ;
+    align-items: center;
+    width: 455px;
+}
+.row:last-child{
+    margin-bottom: 0;
+}
+.selectedLetterInRow{
+    display: flex;
+    position: relative;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+
+    height: 89px;
+    margin-right: 10px;
+    border: 0.1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 20px;
+    box-shadow: -10px -10px 26px rgba(255, 255, 255, 50%), 10px 10px 26px rgba(78, 83, 213, 25%);
+    background-color: #E3E3F3;;
+
+    flex-grow: 1;
+}
+.selectedLetterInRow:last-child{
+    margin-right: 0;
+}
+.selectedLetterSpan{
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    font-size: 40px;
+    font-weight: bold;
+    color: #6362E7;
+}
+

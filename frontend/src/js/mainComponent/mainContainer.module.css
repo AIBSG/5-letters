@@ -1,0 +1,14 @@
+html{
+    overflow-x: hidden ;
+    overflow-y: hidden ;
+}
+.mainContainer {
+    width: 1920px;
+    height: 1080px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    flex-direction: column;
+    position: absolute;
+}
