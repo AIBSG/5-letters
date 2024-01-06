@@ -1,4 +1,5 @@
-﻿using _5letters.Models;
+﻿using System;
+using _5letters.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace _5letters.Data
@@ -11,6 +12,7 @@ namespace _5letters.Data
         public DbSet<Letter> Letters { get; set; }
         public AppDbContext(DbContextOptions options) : base(options)
         {
+            AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
             //Database.EnsureCreated();
         }
         

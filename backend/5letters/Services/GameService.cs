@@ -1,12 +1,22 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
+using _5letters.Data;
 using _5letters.Models;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.VisualBasic;
 
 namespace _5letters.Services
 {
     public class GameService : IGameService
     {
+        private readonly AppDbContext _context;
+
+        public GameService(AppDbContext context)
+        {
+            _context = context;
+        }
         public Word ChekWord(string nowWord, string correctWord)
         {
             Word result = new Word(nowWord);
@@ -41,12 +51,9 @@ namespace _5letters.Services
 
         public Game RunGame(Game nowGame, string nowWorld)
         {
-<<<<<<< HEAD
 
             nowGame.Words.Add(ChekWord(nowWorld, nowGame.CorrectWord.StringWord));
-=======
-            nowGame.Words.Add(ChekWord(nowWorld, nowGame.CorrectWord));
->>>>>>> 180907a1ebbeebd8de057eec01bc3cbc844e1e29
+
             
             if (nowGame.Words.Last().Status == WordStatus.CorrectWord)
             {
@@ -92,5 +99,64 @@ namespace _5letters.Services
             }
         }
 
+        public async Task<Game> SaveGameChanges(Game nowGame)
+        {
+            var lastGame =await _context.Games.FirstOrDefaultAsync(g => g.UserId == nowGame.UserId &&
+                                                              g.Date.Year == nowGame.Date.Year &&
+                                                              g.Date.Month == nowGame.Date.Month &&
+                                                              g.Date.Day == nowGame.Date.Day);
+            if (lastGame == null)
+            {
+                 _context.Set<Game>().Add(nowGame);
+            }
+            else
+            {
+                lastGame.Words = nowGame.Words;
+                lastGame.GameStage = nowGame.GameStage;
+                lastGame.KeyboardStatus = nowGame.KeyboardStatus;
+            }
+            await _context.SaveChangesAsync();
+            return lastGame;
+        }
+        public async Task<Game> TakeTodaysGame(Guid userId)
+        {
+            DateTime currentTime = DateTime.Now.Date;
+
+
+            var game = await _context.Games
+                .Include(g=>g.CorrectWord)
+                .Include(g=>g.KeyboardStatus)
+                .Include(g =>g.Words)
+                .ThenInclude(w => w.Letters)
+                .FirstOrDefaultAsync(g => g.UserId == userId &&
+                                          g.Date.Year == currentTime.Year &&
+                                          g.Date.Month == currentTime.Month &&
+                                          g.Date.Day == currentTime.Day);
+            if (game == null) return CreateNewGame(userId).Result;
+            
+
+            return game;
+        }
+
+        public async Task<Game> CreateNewGame(Guid userId)
+        {
+            var date = DateTimeOffset.Now;
+            var words = await _context.Set<CorrectWord>().ToListAsync();
+            var correctWord = words.FirstOrDefault(g =>
+                                          g.Date.Year == date.Year &&
+                                          g.Date.Month == date.Month &&
+                                          g.Date.Day == date.Day);
+            var newGame = new Game()
+            {
+                CorrectWord = correctWord,
+                Date = date,
+                GameStage = GameStages.GameInProgress,
+                KeyboardStatus = new List<Letter>(),
+                UserId = userId
+            };
+           await _context.Set<Game>().AddAsync(newGame);
+           await _context.SaveChangesAsync();
+            return newGame;
+        }
     }
 }

@@ -11,44 +11,36 @@ using _5letters.Services;
 namespace _5letters.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("[controller]/[action]")]
     public class GameController : ControllerBase
     {
-        
-        private readonly ILogger<GameController> _logger;
+        private readonly IGameService _gameService;
 
-        public static Game NowGame = new Game
-        {
-            CorrectWord = new CorrectWord{Date = DateTimeOffset.Now, Id = 11, StringWord = "носок"},
-            Date = DateTimeOffset.Now,
-            GameStage = GameStages.GameInProgress,
-            Id = 228,
-            Words = new List<Word>(),
-            UserId = Guid.Empty,
-            KeyboardStatus = new List<Letter>()
-        };
+        private readonly IErrorWordService _errorWordService;
         
-        //пользователь заходит мы получаем его id
-        // [HttpPost]
-        // public IActionResult GetUserGame(long userId)
-        // {
-        //     
-        // }
+        public GameController(IGameService gameService, IErrorWordService errorWordService)
+        {
+            _gameService = gameService;
+            _errorWordService = errorWordService;
+        }
+        
         [HttpPost]
-        public IActionResult GetWord(string nowWord)
+        public async Task <IActionResult> GetGame(Guid userId)
         {
-            GameService runGame = new GameService();
-            NowGame = runGame.RunGame(NowGame, nowWord);
-            return Ok(NowGame);
-        }
-
-         [HttpGet]
-        public IActionResult ReturnWord()
-        {
-            return Ok(NowGame);
+            var nowGame = await _gameService.TakeTodaysGame(userId);
+            return Ok(nowGame);
         }
         
-
-
+        [HttpPost]
+        public async Task<IActionResult> SendWord(Guid userId, string nowWord)
+        {
+            var isWordExist = await _errorWordService.IsExistWord(nowWord);
+            if (!isWordExist)
+                return Ok("не знаю такого слова");
+            var nowGame = await _gameService.TakeTodaysGame(userId);
+            nowGame = _gameService.RunGame(nowGame, nowWord);
+            await _gameService.SaveGameChanges(nowGame);
+            return Ok(nowGame);
+        }
     }
 }

@@ -1,6 +1,7 @@
 using System.Threading.Tasks;
 using _5letters.Data;
 using _5letters.Extensions;
+using _5letters.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -21,6 +22,11 @@ namespace _5letters
 
             builder.Services.AddControllers(options => options.UseRoutePrefix("api"));
             builder.Services.AddSwaggerGen();
+            builder.Services.AddScoped<ICorrectWordService, CorrectWordService>();
+            builder.Services.AddScoped<IGameService, GameService>();
+            builder.Services.AddScoped<IErrorWordService, ErrorWordService>();
+            builder.Services.AddScoped<IStatisticService, StatisticService>();
+
 
             var app = builder.Build();
             // Configure the HTTP request pipeline.
@@ -42,13 +48,8 @@ namespace _5letters
                 .SetIsOriginAllowed(origin => true)
                 .AllowCredentials());
 
-<<<<<<< HEAD
-            using (var scope = app.Services.CreateScope())
-            {
-                var context = scope.ServiceProvider.GetRequiredService<AppDbContext>();
-                await context.Database.MigrateAsync();
-            }
-=======
+
+
             // using (var scope = app.Services.CreateScope())
             // {
             //     var context = scope.ServiceProvider.GetRequiredService<AppDbContext>();
@@ -59,7 +60,6 @@ namespace _5letters
             //     var context = scope.ServiceProvider.GetRequiredService<AppDbContext>();
             //     await context.Database.MigrateAsync();
             // }
->>>>>>> 180907a1ebbeebd8de057eec01bc3cbc844e1e29
 
             app.UseAuthorization();
 
